@@ -7,7 +7,11 @@ public class Game {
                 " " + arrayBuilder);
 
         System.out.println("You have guessed ("+ attempt +") wrong letters.");
-        System.out.println("Guess a letter: ");
+        if (attempt < 10){
+            System.out.println("Guess a letter: ");
+        } else {
+            System.out.println("\n\nSorry, you lose!\nThe answer is '" + getTheWord + "'");
+        }
     }
 
     public static void main(String [] args) {
@@ -22,7 +26,7 @@ public class Game {
 
         Scanner scanner = new Scanner(System.in);
 
-        while (attempt != 10) {
+        while (attempt < 10) {
             String input = scanner.next();
 
             int foundAt = theWord.indexOf(input);
@@ -32,8 +36,7 @@ public class Game {
             } else {
                 attempt++;
                 System.out.println("Incorrect letter!");
-                System.out.println("You have guessed (" + attempt + ") wrong letters.");
-                System.out.println("Guess a letter: ");
+                guessProgress(word.countWord(), word.getTheWord(), word.arrayBuild(), attempt);
             }
         }
     }
