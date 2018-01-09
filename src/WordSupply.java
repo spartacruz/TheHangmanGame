@@ -10,7 +10,7 @@ public class WordSupply {
 
     //This method generate word that have to guess
     public String getTheWord() {
-        theWord = "Inception";
+        theWord = "inception";
         return theWord;
     }
 
