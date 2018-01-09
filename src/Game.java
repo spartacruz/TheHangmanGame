@@ -4,7 +4,7 @@ public class Game {
     public static void main(String [] args) {
         //Create new object called word with 'WordSupply' as the type
         WordSupply word = new WordSupply();
-        int attempt = 10;
+        int attempt = 0;
         String theWord = word.getTheWord();
 
         //Call scrambleWord() method at word Object
@@ -17,7 +17,7 @@ public class Game {
 
         Scanner scanner = new Scanner(System.in);
 
-        while (attempt != 0) {
+        while (attempt != 10) {
             String input = scanner.next();
 
             int foundAt = theWord.indexOf(input);
@@ -25,10 +25,11 @@ public class Game {
                 System.out.println("we found that character! at index " + foundAt);
                 break;
             } else {
-                System.out.println("cannot found that character!");
-                break;
+                attempt++;
+                System.out.println("Incorrect letter!");
+                System.out.println("You have guessed (" + attempt + ") wrong letters.");
+                System.out.println("Guess a letter: ");
             }
         }
-
     }
 }
