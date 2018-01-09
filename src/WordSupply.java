@@ -1,9 +1,13 @@
 public class WordSupply {
-    String theWord;
-
+    private String theWord;
     public String getTheWord() {
         theWord = "Inception";
         return theWord;
+    }
+
+    public int countWord() {
+        getTheWord();
+        return theWord.length();
     }
 
 }
