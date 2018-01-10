@@ -32,8 +32,16 @@ public class Game {
 
             int foundAt = theWord.indexOf(input);
             if (foundAt != -1) {
-                System.out.println("we found that character! at index " + foundAt);
-                break;
+                //System.out.println("we found that character! at index " + foundAt);
+                //break;
+                word.swapLetter(input, foundAt);
+                int secScan = theWord.indexOf(input, foundAt + 1);
+                System.out.println(secScan);
+                if (secScan != -1) {
+                    word.swapLetter(input, secScan);
+                }
+
+                guessProgress(word.countWord(), word.getTheWord(), word.finalScramble(), attempt, wrongLetter);
             } else {
                 attempt++;
                 System.out.println("Incorrect letter!");
