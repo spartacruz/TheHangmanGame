@@ -33,7 +33,7 @@ public class WordSupply {
     }
 
     //This method helps to concatenate every element of variable array of String
-    public String arrayBuild(String [] arrayTarget) {
+    public String arrayBuild(String[] arrayTarget) {
         StringBuilder builder = new StringBuilder();
         for (String value : arrayTarget) {
             builder.append(value);
