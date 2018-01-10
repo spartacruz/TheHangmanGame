@@ -2,19 +2,12 @@ import java.util.Scanner;
 
 public class Game {
 
-    public static void guessProgress(int countWord, String getTheWord, String arrayBuilder, int attempt, String wrongLetter) {
-        System.out.println("You are guessing (" + countWord + " Letter): " + getTheWord +
-                " " + arrayBuilder);
-
-        System.out.println("You have guessed (" + attempt + "/10) wrong letters: " + wrongLetter);
-        if (attempt < 10) {
-            System.out.println("Guess a letter: ");
-        } else {
-            System.out.println("\nSorry, you lose!\nThe answer is '" + getTheWord + "'");
-        }
+    //Constructor
+    public Game() {
+        startPlay();
     }
 
-    public static void main(String[] args) {
+    private void startPlay() {
         //Create new object called word with 'WordSupply' as the type
         WordSupply word = new WordSupply();
         int attempt = 0;
@@ -25,9 +18,7 @@ public class Game {
         //Call scrambleWord() method at word Object
         word.scrambleWord();
         guessProgress(word.countWord(), word.getTheWord(), word.finalScramble(), attempt, wrongLetter);
-
         Scanner scanner = new Scanner(System.in);
-
         while (attempt < 10) {
             String input = scanner.next();
 
@@ -56,5 +47,20 @@ public class Game {
                 guessProgress(word.countWord(), word.getTheWord(), word.finalScramble(), attempt, wrongLetter);
             }
         }
+    }
+
+    private void guessProgress(int countWord, String getTheWord, String arrayBuilder, int attempt, String wrongLetter) {
+        System.out.println("You are guessing (" + countWord + " Letter): " + getTheWord +
+                " " + arrayBuilder);
+        System.out.println("You have guessed (" + attempt + "/10) wrong letters: " + wrongLetter);
+        if (attempt < 10) {
+            System.out.println("Guess a letter: ");
+        } else {
+            System.out.println("\nSorry, you lose!\nThe answer is '" + getTheWord + "'");
+        }
+    }
+
+    public static void main(String[] args) {
+        Game game = new Game();
     }
 }
