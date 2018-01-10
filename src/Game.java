@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Game {
@@ -20,12 +21,13 @@ public class Game {
         guessProgress(word.countWord(), word.getTheWord(), word.finalScramble(), attempt, wrongLetter);
         Scanner scanner = new Scanner(System.in);
         while (attempt < 10) {
-            String input = scanner.next();
+            String input = scanner.next().toLowerCase(Locale.US);
+
 
             int foundAt = theWord.indexOf(input);
             if (foundAt != -1) {
                 word.swapLetter(input, foundAt);
-                int secScan = theWord.indexOf(input, foundAt + 1);
+                int secScan = theWord.indexOf(input.toLowerCase(Locale.US), foundAt + 1);
                 correctLetter++;
 
                 while (secScan != -1) {
@@ -48,6 +50,14 @@ public class Game {
             }
         }
     }
+
+//    private int checker() {
+//        int isLetter = 0;
+//        String[] letter = {"a", "b"}
+//
+//
+//        return isLetter;
+//    }
 
     private void guessProgress(int countWord, String getTheWord, String arrayBuilder, int attempt, String wrongLetter) {
         System.out.println("You are guessing (" + countWord + " Letter): " + getTheWord +
