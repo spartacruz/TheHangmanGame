@@ -2,11 +2,11 @@ import java.util.Scanner;
 
 public class Game {
 
-    public static void guessProgress(int countWord, String getTheWord, String arrayBuilder, int attempt) {
+    public static void guessProgress(int countWord, String getTheWord, String arrayBuilder, int attempt, String wrongLetter) {
         System.out.println("You are guessing (" + countWord + " Letter): " + getTheWord +
                 " " + arrayBuilder);
 
-        System.out.println("You have guessed ("+ attempt +") wrong letters.");
+        System.out.println("You have guessed ("+ attempt +") wrong letters: " + wrongLetter);
         if (attempt < 10){
             System.out.println("Guess a letter: ");
         } else {
@@ -19,10 +19,11 @@ public class Game {
         WordSupply word = new WordSupply();
         int attempt = 0;
         String theWord = word.getTheWord();
+        String wrongLetter = "";
 
         //Call scrambleWord() method at word Object
         word.scrambleWord();
-        guessProgress(word.countWord(), word.getTheWord(), word.arrayBuild(), attempt);
+        guessProgress(word.countWord(), word.getTheWord(), word.arrayBuild(), attempt, wrongLetter);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -36,7 +37,8 @@ public class Game {
             } else {
                 attempt++;
                 System.out.println("Incorrect letter!");
-                guessProgress(word.countWord(), word.getTheWord(), word.arrayBuild(), attempt);
+                wrongLetter += " " + input;
+                guessProgress(word.countWord(), word.getTheWord(), word.arrayBuild(), attempt, wrongLetter);
             }
         }
     }
