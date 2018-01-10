@@ -36,10 +36,14 @@ public class Game {
                 //break;
                 word.swapLetter(input, foundAt);
                 int secScan = theWord.indexOf(input, foundAt + 1);
-                System.out.println(secScan);
-                if (secScan != -1) {
+
+                while (secScan != -1) {
                     word.swapLetter(input, secScan);
+                    secScan = theWord.indexOf(input, secScan + 1);
                 }
+
+                
+                System.out.println(secScan);
 
                 guessProgress(word.countWord(), word.getTheWord(), word.finalScramble(), attempt, wrongLetter);
             } else {
