@@ -27,6 +27,11 @@ public class WordSupply {
         return finalScramble;
     }
 
+    public void swapLetter(String input, int index) {
+        scramble[index] = input;
+        finalScramble = arrayBuild(scramble);
+    }
+
     //This method helps to concatenate every element of variable array of String
     public String arrayBuild(String [] arrayTarget) {
         StringBuilder builder = new StringBuilder();
