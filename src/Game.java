@@ -23,7 +23,7 @@ public class Game {
 
         //Call scrambleWord() method at word Object
         word.scrambleWord();
-        guessProgress(word.countWord(), word.getTheWord(), word.arrayBuild(), attempt, wrongLetter);
+        guessProgress(word.countWord(), word.getTheWord(), word.finalScramble(), attempt, wrongLetter);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -38,7 +38,7 @@ public class Game {
                 attempt++;
                 System.out.println("Incorrect letter!");
                 wrongLetter += " " + input;
-                guessProgress(word.countWord(), word.getTheWord(), word.arrayBuild(), attempt, wrongLetter);
+                guessProgress(word.countWord(), word.getTheWord(), word.finalScramble(), attempt, wrongLetter);
             }
         }
     }

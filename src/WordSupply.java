@@ -1,6 +1,7 @@
 public class WordSupply {
     private String theWord;
     private String[] scramble = new String[countWord()];
+    private String finalScramble = "";
 
     //This method generate how many letter have to guess
     public int countWord() {
@@ -19,12 +20,17 @@ public class WordSupply {
         for (int i = 0; i < countWord(); i++) {
             scramble[i] = "_";
         }
+        finalScramble = arrayBuild(scramble);
     }
 
-    //This method helps to concatenate every element of variable: 'scramble' array of String
-    public String arrayBuild() {
+    public String finalScramble() {
+        return finalScramble;
+    }
+
+    //This method helps to concatenate every element of variable array of String
+    public String arrayBuild(String [] arrayTarget) {
         StringBuilder builder = new StringBuilder();
-        for (String value : scramble) {
+        for (String value : arrayTarget) {
             builder.append(value);
         }
         return builder.toString();
