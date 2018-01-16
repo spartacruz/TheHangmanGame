@@ -25,43 +25,44 @@ public class Game {
 
             if (input.matches("[a-zA-Z]")) {
                 int foundAt = theWord.indexOf(input);
-                if (foundAt != -1) {
-                    word.swapLetter(input, foundAt);
-                    int secScan = theWord.indexOf(input.toLowerCase(Locale.US), foundAt + 1);
-                    correctLetter++;
+                int duplicateWrong = 0;
+                duplicateWrong = wrongLetter.indexOf(input);
 
-                    while (secScan != -1) {
-                        word.swapLetter(input, secScan);
-                        secScan = theWord.indexOf(input, secScan + 1);
+                if (duplicateWrong == -1) {
+                    if (foundAt != -1) {
+                        word.swapLetter(input, foundAt);
+                        int secScan = theWord.indexOf(input.toLowerCase(Locale.US), foundAt + 1);
                         correctLetter++;
-                    }
-                    if (correctLetter == word.countWord()) {
-                        System.out.println("\nYassss\nYOU WIN!");
-                        System.out.println("\nYou have guessed '" + word.getTheWord() + "' correctly.");
-                        break;
-                    }
 
-                    guessProgress(word.countWord(), word.getTheWord(), word.finalScramble(), attempt, wrongLetter);
-                } else {
-                    attempt++;
-                    System.out.println("Incorrect letter!");
-                    wrongLetter += " " + input;
+                        while (secScan != -1) {
+                            word.swapLetter(input, secScan);
+                            secScan = theWord.indexOf(input, secScan + 1);
+                            correctLetter++;
+                        }
+
+                        if (correctLetter == word.countWord()) {
+                            System.out.println("\nYassss\nYOU WIN!");
+                            System.out.println("\nYou have guessed '" + word.getTheWord() + "' correctly.");
+                            break;
+                        }
+                        guessProgress(word.countWord(), word.getTheWord(), word.finalScramble(), attempt, wrongLetter);
+                    } else {
+                        attempt++;
+                        System.out.println("Incorrect letter!");
+                        wrongLetter += " " + input;
+                        guessProgress(word.countWord(), word.getTheWord(), word.finalScramble(), attempt, wrongLetter);
+                    }
+                } else { 
+                    System.out.println("You have already input this letter. Please try another one.");
                     guessProgress(word.countWord(), word.getTheWord(), word.finalScramble(), attempt, wrongLetter);
                 }
+
             } else {
                 System.out.println("Incorrect Input. Please input a letter.");
                 guessProgress(word.countWord(), word.getTheWord(), word.finalScramble(), attempt, wrongLetter);
             }
         }
     }
-
-//    private int checker() {
-//        int isLetter = 0;
-//        String[] letter = {"a", "b"}
-//
-//
-//        return isLetter;
-//    }
 
     private void guessProgress(int countWord, String getTheWord, String arrayBuilder, int attempt, String wrongLetter) {
         System.out.println("You are guessing (" + countWord + " Letter): " + getTheWord +
